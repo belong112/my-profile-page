@@ -32,7 +32,7 @@ export default function Projects() {
               </Typography>
               <Image
                 src={projectPic1}
-                alt="my picture :)"
+                alt="project picture"
                 width={330}
                 loading="lazy"
               />
