@@ -1,6 +1,6 @@
 import Container from "@mui/material/Container";
 import Header from "../conponents/Header";
-import { Box, Typography } from "@mui/material";
+import { Box, Typography, Link } from "@mui/material";
 
 export default function Projects() {
   return (
@@ -27,7 +27,16 @@ export default function Projects() {
             gutterBottom
             sx={{ margin: "30px 0px" }}
           >
-            github : https://github.com/belong112
+            github :
+            <Link
+              href="https://github.com/belong112"
+              underline="hover"
+              color="inherit"
+              target="_blank"
+              rel="noreferrer"
+            >
+              {" https://github.com/belong112"}
+            </Link>
           </Typography>
         </Box>
       </Container>
