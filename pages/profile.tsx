@@ -3,7 +3,7 @@ import Container from "@mui/material/Container";
 import Header from "../conponents/Header";
 import Grid from "@mui/material/Grid";
 import Box from "@mui/material/Box";
-import profilePic from "../assets/images/profile-pic.jpg";
+import profilePic from "../public/images/profile-pic.jpg";
 import Typography from "@mui/material/Typography";
 
 export default function Projects() {
