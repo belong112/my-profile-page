@@ -23,12 +23,6 @@
       "projectTitle": "均一教育平台側邊目錄",
       "projectDescription": "均一平台程式碼是由 khan academy 在 2012 年所複製出來的，程式碼老舊不易維護。因此決定使用 React.js 重新撰寫徽章頁面，讓未來管理者能較容易迭代更新。",
       "projectLink": ""
-    },
-    {
-      "pid": 5,
-      "projectTitle": "行事曆日記",
-      "projectDescription": "期末報告和組員製作一個具有行事曆和日記功能的網頁。我主要負責行事曆前端的頁面設計，串接開源套件，並嘗試修改套件程式碼以符合我們的需求。",
-      "projectLink": ""
     }
   ]
 }

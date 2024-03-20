@@ -9,7 +9,7 @@ import projectData from "@/src/project-data.json";
 const Item = styled(Paper)(({ theme }) => ({
   backgroundColor: theme.palette.mode === "dark" ? "#1A2027" : "#fff",
   ...theme.typography.body2,
-  padding: theme.spacing(1),
+  paddingTop: "10px",
   textAlign: "center",
   color: theme.palette.text.secondary,
   height: "100%",
@@ -32,12 +32,14 @@ export default function Projects() {
     <>
       <Container maxWidth="lg">
         <Header />
-        <Typography component="h1" variant="h3" color="inherit" gutterBottom>
-          My Project
-        </Typography>
-        <Grid container spacing={2}>
-          {projects}
-        </Grid>
+        <main>
+          <Typography component="h1" variant="h3" color="inherit" gutterBottom>
+            專案製作
+          </Typography>
+          <Grid container spacing={2}>
+            {projects}
+          </Grid>
+        </main>
       </Container>
     </>
   );

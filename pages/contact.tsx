@@ -7,38 +7,44 @@ export default function Projects() {
     <>
       <Container maxWidth="lg">
         <Header />
-        <Typography component="h1" variant="h3" color="inherit" gutterBottom>
-          Contact me
-        </Typography>
-        <Box>
+        <main>
           <Typography
-            component="h5"
-            variant="h5"
+            component="h1"
+            variant="h3"
             color="inherit"
             gutterBottom
-            sx={{ margin: "30px 0px" }}
+            sx={{}}
           >
-            email : belongbelong223@gmail.com
+            聯絡我
           </Typography>
-          <Typography
-            component="h5"
-            variant="h5"
-            color="inherit"
-            gutterBottom
-            sx={{ margin: "30px 0px" }}
-          >
-            github :
-            <Link
-              href="https://github.com/belong112"
-              underline="hover"
+          <Box>
+            <Typography
+              variant="body1"
               color="inherit"
-              target="_blank"
-              rel="noreferrer"
+              gutterBottom
+              sx={{ margin: "30px 0px" }}
             >
-              {" https://github.com/belong112"}
-            </Link>
-          </Typography>
-        </Box>
+              email : belongbelong223@gmail.com
+            </Typography>
+            <Typography
+              variant="body1"
+              color="inherit"
+              gutterBottom
+              sx={{ margin: "30px 0px" }}
+            >
+              github :
+              <Link
+                href="https://github.com/belong112"
+                underline="hover"
+                color="inherit"
+                target="_blank"
+                rel="noreferrer"
+              >
+                {" https://github.com/belong112"}
+              </Link>
+            </Typography>
+          </Box>
+        </main>
       </Container>
     </>
   );

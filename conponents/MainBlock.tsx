@@ -3,7 +3,6 @@ import Paper from "@mui/material/Paper";
 import Typography from "@mui/material/Typography";
 import Grid from "@mui/material/Grid";
 import Box from "@mui/material/Box";
-import Typed from "react-typed";
 
 interface MainBlockProps {
   post: {
@@ -11,7 +10,6 @@ interface MainBlockProps {
     image: string;
     imageText: string;
     title: string;
-    skills: Array<string>;
   };
 }
 
@@ -24,8 +22,7 @@ export default function MainBlock(props: MainBlockProps) {
         position: "relative",
         backgroundColor: "grey.800",
         color: "#fff",
-        mb: 4,
-        height: "700px",
+        height: "580px",
         backgroundSize: "cover",
         backgroundRepeat: "no-repeat",
         backgroundPosition: "center",
@@ -74,14 +71,7 @@ export default function MainBlock(props: MainBlockProps) {
               variant="h3"
               color="inherit"
               sx={{ margin: "30px 0px" }}
-            >
-              <Typed
-                strings={post.skills}
-                typeSpeed={80}
-                backSpeed={50}
-                loop
-              ></Typed>
-            </Typography>
+            ></Typography>
           </Box>
         </Grid>
       </Grid>
