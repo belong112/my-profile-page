@@ -1,10 +1,10 @@
-import projectData from "@/src/project-data.json";
-
 import Container from "@mui/material/Container";
 import { styled } from "@mui/material/styles";
 import { Typography, Grid, Paper } from "@mui/material";
 import Header from "@/components/Header";
 import Card from "@/components/Card";
+
+import projectData from "@/src/project-data.json";
 
 const Item = styled(Paper)(({ theme }) => ({
   backgroundColor: theme.palette.mode === "dark" ? "#1A2027" : "#fff",
