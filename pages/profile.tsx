@@ -1,12 +1,61 @@
+import { useEffect, useState } from "react";
 import Image from "next/image";
+import profilePic from "@/public/images/profile-pic.jpg";
+
 import Container from "@mui/material/Container";
-import Header from "../conponents/Header";
 import Grid from "@mui/material/Grid";
 import Box from "@mui/material/Box";
-import profilePic from "../public/images/profile-pic.jpg";
 import Typography from "@mui/material/Typography";
+import Header from "@/components/Header";
+
+type SkillData = {
+  title: string;
+  skill: Array<string>;
+};
+
+type Data = {
+  introduction: string;
+  skills: Array<SkillData>;
+};
+
+function SkillList({ skillData }: { skillData: Array<string> }) {
+  const lists = skillData.map((item: string) => (
+    <Typography color="text.secondary" sx={{ fontSize: "20px" }} key={item}>
+      - {item}
+    </Typography>
+  ));
+
+  return <Box sx={{ pl: 1 }}>{lists}</Box>;
+}
+
+function SkillBox({ skills }: { skills: Array<SkillData> }) {
+  const lists = skills.map((field: SkillData) => (
+    <Grid item md={4} key={field.title}>
+      <Box sx={{ p: 1, minHeight: "250px" }}>
+        <Typography variant="h5" gutterBottom>
+          {field.title}
+        </Typography>
+        <SkillList skillData={field.skill} />
+      </Box>
+    </Grid>
+  ));
+
+  return <>{lists}</>;
+}
 
 export default function Projects() {
+  const [introduction, setIntroduction] = useState("");
+  const [skills, setSkills] = useState([]);
+
+  useEffect(() => {
+    fetch("http://localhost:3000/api/profile")
+      .then((res) => res.json())
+      .then((data) => {
+        setIntroduction(data.introduction);
+        setSkills(data.skills);
+      });
+  }, []);
+
   return (
     <>
       <Container maxWidth="lg">
@@ -29,12 +78,7 @@ export default function Projects() {
             </Grid>
             <Grid item md={6}>
               <Typography sx={{ fontSize: "20px" }} color="inherit">
-                我叫邱昱禎，大學為電機資訊專業，縝密的邏輯思維和解
-                決問題的能力是我的強項。半年的企業工作經驗讓我對網
-                頁技術有更全面的了解。兩年的現場教學經驗讓我培養系
-                統思考的能力，使我能看見問題的結構，分析自己的位
-                置，並嘗試解決。期許自己持續精進各項能力，用自己的
-                專業協助公司解決問題、一同成長。
+                {introduction}
               </Typography>
             </Grid>
           </Grid>
@@ -43,99 +87,7 @@ export default function Projects() {
               <Typography variant="h4">我的技能樹</Typography>
             </Grid>
             <Grid container spacing={2} item md={12}>
-              <Grid item md={4}>
-                <Box sx={{ p: 1, minHeight: "250px" }}>
-                  <Typography variant="h5" gutterBottom>
-                    Front End
-                  </Typography>
-                  <Box sx={{ pl: 1 }}>
-                    <Typography
-                      color="text.secondary"
-                      sx={{ fontSize: "20px" }}
-                    >
-                      - Html / Css / JavaScript
-                    </Typography>
-                    <Typography
-                      color="text.secondary"
-                      sx={{ fontSize: "20px" }}
-                    >
-                      - React.js
-                    </Typography>
-                    <Typography
-                      color="text.secondary"
-                      sx={{ fontSize: "20px" }}
-                    >
-                      - Vue.js
-                    </Typography>
-                    <Typography
-                      color="text.secondary"
-                      sx={{ fontSize: "20px" }}
-                    >
-                      - Vite
-                    </Typography>
-                    <Typography
-                      color="text.secondary"
-                      sx={{ fontSize: "20px" }}
-                    >
-                      - SCSS / Tailwind
-                    </Typography>
-                  </Box>
-                </Box>
-              </Grid>
-              <Grid item md={4}>
-                <Box sx={{ p: 1, minHeight: "250px" }}>
-                  <Typography variant="h5" gutterBottom>
-                    Back End
-                  </Typography>
-                  <Box sx={{ pl: 1 }}>
-                    <Typography
-                      color="text.secondary"
-                      sx={{ fontSize: "20px" }}
-                    >
-                      - Python
-                    </Typography>
-                    <Typography
-                      color="text.secondary"
-                      sx={{ fontSize: "20px" }}
-                    >
-                      - Node.js
-                    </Typography>
-                    <Typography
-                      color="text.secondary"
-                      sx={{ fontSize: "20px" }}
-                    >
-                      - RESTful api
-                    </Typography>
-                  </Box>
-                </Box>
-              </Grid>
-              <Grid item md={4}>
-                <Box sx={{ p: 1, minHeight: "250px" }}>
-                  <Typography variant="h5" gutterBottom>
-                    Other
-                  </Typography>
-                  <Box sx={{ pl: 1 }}>
-                    <Typography
-                      color="text.secondary"
-                      sx={{ fontSize: "20px" }}
-                    >
-                      - Git
-                    </Typography>
-                    <Typography
-                      color="text.secondary"
-                      sx={{ fontSize: "20px" }}
-                    >
-                      - React Testing Librbay / Vitest
-                    </Typography>
-                    <Typography
-                      color="text.secondary"
-                      sx={{ fontSize: "20px" }}
-                    >
-                      - Jenkins
-                    </Typography>
-                  </Box>
-                </Box>
-              </Grid>
+              <SkillBox skills={skills} />
             </Grid>
           </Grid>
         </main>

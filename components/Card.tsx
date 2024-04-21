@@ -1,9 +1,10 @@
 import * as React from "react";
+import Image from "next/image";
+
 import { styled } from "@mui/material/styles";
 import Dialog from "@mui/material/Dialog";
 import DialogTitle from "@mui/material/DialogTitle";
 import DialogContent from "@mui/material/DialogContent";
-import Image from "next/image";
 import Typography from "@mui/material/Typography";
 
 interface CardProps {

@@ -1,6 +1,6 @@
 import Container from "@mui/material/Container";
-import Header from "../conponents/Header";
 import { Box, Typography, Link } from "@mui/material";
+import Header from "@/components/Header";
 
 export default function Projects() {
   return (

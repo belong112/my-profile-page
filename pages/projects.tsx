@@ -1,10 +1,10 @@
-import Image from "next/image";
+import projectData from "@/src/project-data.json";
+
 import Container from "@mui/material/Container";
 import { styled } from "@mui/material/styles";
-import Header from "../conponents/Header";
-import Card from "../conponents/Card";
 import { Typography, Grid, Paper } from "@mui/material";
-import projectData from "@/src/project-data.json";
+import Header from "@/components/Header";
+import Card from "@/components/Card";
 
 const Item = styled(Paper)(({ theme }) => ({
   backgroundColor: theme.palette.mode === "dark" ? "#1A2027" : "#fff",

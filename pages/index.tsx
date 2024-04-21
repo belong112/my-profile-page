@@ -1,9 +1,9 @@
 import Head from "next/head";
-import styles from "@/styles/Home.module.css";
+
 import Box from "@mui/material/Box";
 import Container from "@mui/material/Container";
-import Header from "@/conponents/Header";
-import MainBlock from "@/conponents/MainBlock";
+import Header from "@/components/Header";
+import MainBlock from "@/components/MainBlock";
 
 const mainBlock = {
   title: "哈囉，歡迎來到我的小站",
