@@ -1,8 +1,22 @@
+import { useEffect, useState } from "react";
+
 import Container from "@mui/material/Container";
 import { Box, Typography, Link } from "@mui/material";
 import Header from "@/components/Header";
 
 export default function Projects() {
+  const [email, setEmail] = useState("");
+  const [github, setGithub] = useState("");
+
+  useEffect(() => {
+    fetch("/api/contact")
+      .then((res) => res.json())
+      .then((data) => {
+        setEmail(data.email);
+        setGithub(data.github);
+      });
+  }, []);
+
   return (
     <>
       <Container maxWidth="lg">
@@ -19,28 +33,28 @@ export default function Projects() {
           </Typography>
           <Box>
             <Typography
-              variant="body1"
+              variant="h6"
               color="inherit"
               gutterBottom
               sx={{ margin: "30px 0px" }}
             >
-              email : belongbelong223@gmail.com
+              Email : {email}
             </Typography>
             <Typography
-              variant="body1"
+              variant="h6"
               color="inherit"
               gutterBottom
               sx={{ margin: "30px 0px" }}
             >
               github :
               <Link
-                href="https://github.com/belong112"
+                href={github}
                 underline="hover"
                 color="inherit"
                 target="_blank"
                 rel="noreferrer"
               >
-                {" https://github.com/belong112"}
+                {github}
               </Link>
             </Typography>
           </Box>

@@ -48,7 +48,7 @@ export default function Projects() {
   const [skills, setSkills] = useState([]);
 
   useEffect(() => {
-    fetch("http://localhost:3000/api/profile")
+    fetch("/api/profile")
       .then((res) => res.json())
       .then((data) => {
         setIntroduction(data.introduction);

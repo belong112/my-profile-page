@@ -1,10 +1,17 @@
+import { useState, useEffect } from "react";
+
 import Container from "@mui/material/Container";
 import { styled } from "@mui/material/styles";
 import { Typography, Grid, Paper } from "@mui/material";
 import Header from "@/components/Header";
 import Card from "@/components/Card";
 
-import projectData from "@/src/project-data.json";
+type project = {
+  pid: number;
+  projectTitle: string;
+  projectDescription: string;
+  projectLink: string;
+};
 
 const Item = styled(Paper)(({ theme }) => ({
   backgroundColor: theme.palette.mode === "dark" ? "#1A2027" : "#fff",
@@ -15,19 +22,34 @@ const Item = styled(Paper)(({ theme }) => ({
   height: "100%",
 }));
 
-const projects = projectData.projectList.map((p) => (
-  <Grid key={p.pid} item xs={4}>
-    <Item>
-      <Card
-        projectId={p.pid.toString()}
-        projectName={p.projectTitle}
-        projectDescription={p.projectDescription}
-      />
-    </Item>
-  </Grid>
-));
+function ProjectList({ projectData }: { projectData: Array<project> }) {
+  const projects = projectData.map((p) => (
+    <Grid key={p.pid} item xs={4}>
+      <Item>
+        <Card
+          projectId={p.pid.toString()}
+          projectName={p.projectTitle}
+          projectDescription={p.projectDescription}
+        />
+      </Item>
+    </Grid>
+  ));
+
+  return <>{projects}</>;
+}
 
 export default function Projects() {
+  const [projectList, setProjectList] = useState([]);
+
+  useEffect(() => {
+    fetch("/api/projects")
+      .then((res) => res.json())
+      .then((data) => {
+        console.log(data);
+        setProjectList(data.projectList);
+      });
+  }, []);
+
   return (
     <>
       <Container maxWidth="lg">
@@ -37,7 +59,7 @@ export default function Projects() {
             專案製作
           </Typography>
           <Grid container spacing={2}>
-            {projects}
+            <ProjectList projectData={projectList} />
           </Grid>
         </main>
       </Container>
