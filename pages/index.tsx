@@ -1,3 +1,4 @@
+import { useState, useEffect } from "react";
 import Head from "next/head";
 
 import Box from "@mui/material/Box";
@@ -5,15 +6,22 @@ import Container from "@mui/material/Container";
 import Header from "@/components/Header";
 import MainBlock from "@/components/MainBlock";
 
-const mainBlock = {
-  title: "哈囉，歡迎來到我的小站",
-  description:
-    "這是邱昱禎的個人網站，內有自我介紹、我過去製作的專案、我的聯絡方式。歡迎隨意逛逛。",
-  image: "https://source.unsplash.com/_LfLA5Nqfko",
-  imageText: "main image description",
-};
-
 export default function Home() {
+  const [mainData, setMainData] = useState({
+    title: "",
+    description: "",
+    image: "",
+    imageText: "",
+  });
+
+  useEffect(() => {
+    fetch("/api/home")
+      .then((res) => res.json())
+      .then((data) => {
+        setMainData(data);
+      });
+  }, []);
+
   return (
     <>
       <Head>
@@ -24,7 +32,7 @@ export default function Home() {
       </Head>
       <Container maxWidth="lg">
         <Header />
-        <MainBlock post={mainBlock} />
+        <MainBlock post={mainData} />
         <Box
           sx={{
             fontWeight: 600,
