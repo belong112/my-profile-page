@@ -5,6 +5,7 @@ import Box from "@mui/material/Box";
 import Container from "@mui/material/Container";
 import Header from "@/components/Header";
 import MainBlock from "@/components/MainBlock";
+import Thumb from "@/components/Thumb";
 
 export default function Home() {
   const [mainData, setMainData] = useState({
@@ -39,7 +40,8 @@ export default function Home() {
             fontSize: "1.5rem",
             textAlign: "center",
           }}
-        ></Box>
+        />
+        <Thumb />
       </Container>
     </>
   );

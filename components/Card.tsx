@@ -7,7 +7,7 @@ interface CardProps {
   projectId: string;
   projectName: string;
   projectDescription: string;
-  clickCard: any; // 暫時處理，需再研究
+  clickCard: () => void;
 }
 
 export default function Card(props: CardProps) {

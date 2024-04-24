@@ -26,7 +26,7 @@ const BootstrapDialog = styled(Dialog)(({ theme }) => ({
   },
 }));
 
-const MyTypography = styled(Typography)(({ theme }) => ({
+const MyTypography = styled(Typography)(() => ({
   width: "500px",
 }));
 
